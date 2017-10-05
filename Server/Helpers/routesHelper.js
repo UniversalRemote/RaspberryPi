@@ -10,16 +10,16 @@ class routesHelper {
   initRoute(route){
       switch (route.method){
           case "GET":
-              app.get(route.endpoint, route.handler);
+              this.app.get(route.endpoint, route.handler);
               break;
           case "PUT":
-              app.put(route.endpoint, route.handler);
+              this.app.put(route.endpoint, route.handler);
               break;
           case "POST":
-              app.post(route.endpoint, route.handler);
+              this.app.post(route.endpoint, route.handler);
               break;
           case "DELETE":
-              app.delete(route.endpoint, route.handler);
+              this.app.delete(route.endpoint, route.handler);
               break;
           default:
               throw new Error("Invalid http method "+route.method);

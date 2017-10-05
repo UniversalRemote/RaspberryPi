@@ -6,14 +6,15 @@ let baseRoute = "/api";
 let port = process.env.PORT || 8000;
 
 let express = require("express");
+let RouteHelper = require("./Helpers/routesHelper");
 let app = express();
 
 
-app.listen(post);
+app.listen(port);
 
 //Initialize helpers
-let routesHeper = require("Helpers/routesHelper")(app);
+let routesHelper = new RouteHelper(app);
 
 //Initialize controllers
-let controllerInitializer = require("Contollers/controllersInitializer");
-controllerInitializer(baseRoute, app);
+let controllerInitializer = require("./Contollers/controllersInitializer");
+controllerInitializer(baseRoute, routesHelper);
