@@ -1,0 +1,31 @@
+<!-- 
+  Create a new view that uses a map to display all the listings with the angular-google-maps library. 
+  Each listing should be displayed as a marker. Each marker, when clicked on, should display a window that 
+  provides the name, code, and address of the listing. 
+
+  Some useful documentation: 
+    https://angular-ui.github.io/angular-google-maps/#!/api/google-map
+    https://angular-ui.github.io/angular-google-maps/#!/api/markers
+    https://angular-ui.github.io/angular-google-maps/#!/api/windows
+  -->
+<!--<div ng-controller="ListingsController" ng-init="initMap()">-->
+    <!--<h3>My Google Maps Demo</h3>-->
+    <!--<div id="map"></div>-->
+    <!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDCOphMBqOUb0_nhK-2f4q7YahgsBsO1M&callback=initMap"-->
+            <!--type="text/javascript"></script>-->
+<!--</div>-->
+
+
+<div id="map_canvas" ng-controller="ListingsController" ng-init="setMap()">
+    <ui-gmap-google-map dorebuildall=true center="map.center" zoom="map.zoom" options="options">
+        <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'"  click="onClick">
+            <ui-gmap-windows show="showMarker">
+                <div>
+                    <div ng-non-bindable><bold>Code:</bold> {{code}}</div>
+                    <div ng-non-bindable><bold>Name:</bold> {{name}}</div>
+                </div>
+            </ui-gmap-windows>
+        </ui-gmap-markers>
+    </ui-gmap-google-map>
+</div>
+
