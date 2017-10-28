@@ -1,13 +1,13 @@
 'use strict';
 
 // Configuring the Articles module
-angular.module('learn_more').run(['menuService',
+angular.module('my_controllers').run(['menuService',
   function (Menus) {
     // Add the articles dropdown item
     Menus.addMenuItem('topbar', {
-      title: 'Learn More',
-      state: 'learn_more',
-      roles: ['*']
+      title: 'My Controllers',
+      state: 'my_controllers',
+      roles: ['user', 'admin']
     });
   }
 ]);
