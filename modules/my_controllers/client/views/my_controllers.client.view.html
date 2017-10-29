@@ -1,4 +1,31 @@
 <!-- The chat view -->
 <section class="container" ng-controller="MyControllerController">
-  Controllers goes here
+
+  <div class="page-header">
+    <h1>My Controllers</h1>
+  </div>
+
+  <p>
+    <a class="btn btn-primary btn-lg my_controller_fixedbutton" ng-click="openModal()" target="_blank">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </p>
+
+  <div class="container">
+
+    <div ng-repeat="remote in controllers" class="col-xs-12 col-md-6 col-lg-4 my_controller_box_space">
+      <a class="my_controller_box list-group-item">
+
+        <div class="my_controller_content">
+          <img src="/modules/core/client/img/loaders/loader.gif" ng-src="{{remote.icon}}"/>
+        </div>
+
+        <div class="my_controller_hidden_content">
+          {{remote.title}}
+        </div>
+      </a>
+
+    </div>
+  </div>
+
 </section>

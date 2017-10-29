@@ -1,4 +1,54 @@
-.quoter {
-	color: #95B358;
-	font-size: 1.5em
+.my_controller_box {
+	margin: 2em auto;
+	width: 20em;
+	width: 20em;
+}
+
+.my_controller_box_space {
+	text-align: center;
+}
+
+.list-group-item:hover .my_controller_content {
+	opacity: 0.2;
+}
+
+.list-group-item:hover .my_controller_hidden_content {
+	opacity: 1;
+}
+
+.my_controller_content img {
+	width: 100%;
+}
+
+.my_controller_hidden_content {
+	opacity: 0;
+	transition: .8s ease;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	background-color: black;
+	color: white;
+	width: 100%;
+	font-size: 2em;
+}
+
+.my_controller_content {
+	opacity: 1;
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: .5s ease;
+	backface-visibility: hidden;
+}
+
+.my_controller_fixedbutton {
+	position: fixed;
+	border-radius: 50%;
+	font-size: 3em;
+	bottom: 1em;
+	right: 1em;
+	z-index: 2;
+	text-align: center;
 }
