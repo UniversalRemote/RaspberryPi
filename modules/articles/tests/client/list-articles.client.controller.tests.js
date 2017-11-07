@@ -74,9 +74,9 @@
         mockArticleList = [mockArticle, mockArticle];
       });
 
-      it('should send a GET request and return all articles', inject(function (ArticlesService) {
+      it('should send a GET request and return all remote', inject(function (ArticlesService) {
         // Set POST response
-        $httpBackend.expectGET('/api/articles').respond(mockArticleList);
+        $httpBackend.expectGET('/api/remote').respond(mockArticleList);
 
         // Ignore parent template get on state transition
         $httpBackend.whenGET('/modules/core/client/views/home.client.view.html').respond(200, '');

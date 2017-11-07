@@ -90,7 +90,7 @@
 
       it('should send a POST request with the form input values and then locate to new object URL', inject(function (ArticlesService) {
         // Set POST response
-        $httpBackend.expectPOST('/api/articles', sampleArticlePostData).respond(mockArticle);
+        $httpBackend.expectPOST('/api/remote', sampleArticlePostData).respond(mockArticle);
 
         // Run controller functionality
         $scope.vm.save(true);
@@ -104,7 +104,7 @@
 
       it('should call Notification.error if error', function () {
         var errorMessage = 'this is an error message';
-        $httpBackend.expectPOST('/api/articles', sampleArticlePostData).respond(400, {
+        $httpBackend.expectPOST('/api/remote', sampleArticlePostData).respond(400, {
           message: errorMessage
         });
 
@@ -150,11 +150,11 @@
 
     describe('vm.remove()', function () {
       beforeEach(function () {
-        // Setup articles
+        // Setup remote
         $scope.vm.article = mockArticle;
       });
 
-      it('should delete the article and redirect to articles', function () {
+      it('should delete the article and redirect to remote', function () {
         // Return true on confirm message
         spyOn(window, 'confirm').and.returnValue(true);
 

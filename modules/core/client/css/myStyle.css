@@ -1,0 +1,44 @@
+.core-icon {
+	font-size: 12em;
+	margin: auto;
+}
+
+.green {
+	color: greenyellow;
+}
+
+.red {
+	background-color: red;
+}
+
+.gray{
+	background-color: lightslategray;
+}
+
+.my-center {
+	float: none;
+	margin: 0 auto;
+}
+
+.my-bg-green {
+	color: #ffffff;
+	background-color: #24cf5f;
+}
+
+.my-button-controller {
+	padding: 12px 25px;
+	font-size: 20px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	border: 0;
+	border-radius: 2px;
+	outline: 0;
+	box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+	transition: all .2s;
+	margin: 10px;
+}
+
+.my-button-controller:hover {
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}

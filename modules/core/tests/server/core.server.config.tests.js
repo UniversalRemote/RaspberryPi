@@ -89,7 +89,7 @@ describe('Configuration Tests:', function () {
         });
     });
 
-    it('should have default seed configuration set for articles', function (done) {
+    it('should have default seed configuration set for remote', function (done) {
       articleSeedConfig.should.be.instanceof(Object);
       articleSeedConfig.docs.should.be.instanceof(Array).and.have.lengthOf(1);
       should.exist(articleSeedConfig.docs[0].data.title);

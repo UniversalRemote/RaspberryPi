@@ -26,7 +26,7 @@
         }));
 
         it('Should have the correct URL', function () {
-          expect(mainstate.url).toEqual('/articles');
+          expect(mainstate.url).toEqual('/remote');
         });
 
         it('Should be abstract', function () {
@@ -53,7 +53,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(liststate.templateUrl).toBe('/modules/articles/client/views/admin/list-articles.client.view.html');
+          expect(liststate.templateUrl).toBe('/modules/remote/client/views/admin/list-remote.client.view.html');
         });
       });
 
@@ -64,7 +64,7 @@
 
         beforeEach(inject(function ($controller, $state, $templateCache) {
           createstate = $state.get('admin.articles.create');
-          $templateCache.put('/modules/articles/client/views/admin/form-article.client.view.html', '');
+          $templateCache.put('/modules/remote/client/views/admin/form-article.client.view.html', '');
 
           // Create mock article
           mockArticle = new ArticlesService();
@@ -86,7 +86,7 @@
         });
 
         it('should respond to URL', inject(function ($state) {
-          expect($state.href(createstate)).toEqual('/admin/articles/create');
+          expect($state.href(createstate)).toEqual('/admin/remote/create');
         }));
 
         it('should attach an article to the controller scope', function () {
@@ -99,7 +99,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(createstate.templateUrl).toBe('/modules/articles/client/views/admin/form-article.client.view.html');
+          expect(createstate.templateUrl).toBe('/modules/remote/client/views/admin/form-article.client.view.html');
         });
       });
 
@@ -110,7 +110,7 @@
 
         beforeEach(inject(function ($controller, $state, $templateCache) {
           editstate = $state.get('admin.articles.edit');
-          $templateCache.put('/modules/articles/client/views/admin/form-article.client.view.html', '');
+          $templateCache.put('/modules/remote/client/views/admin/form-article.client.view.html', '');
 
           // Create mock article
           mockArticle = new ArticlesService({
@@ -138,7 +138,7 @@
         it('should respond to URL', inject(function ($state) {
           expect($state.href(editstate, {
             articleId: 1
-          })).toEqual('/admin/articles/1/edit');
+          })).toEqual('/admin/remote/1/edit');
         }));
 
         it('should attach an article to the controller scope', function () {
@@ -150,7 +150,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(editstate.templateUrl).toBe('/modules/articles/client/views/admin/form-article.client.view.html');
+          expect(editstate.templateUrl).toBe('/modules/remote/client/views/admin/form-article.client.view.html');
         });
 
         xit('Should go to unauthorized route', function () {

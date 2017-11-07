@@ -41,12 +41,3 @@ a:hover .header-profile-image {
 .has-error .help-inline.error-text {
   display: inline;
 }
-
-.core_icon{
-	font-size:12em;
-	margin: auto;
-}
-
-.green{
-	color:greenyellow;
-}

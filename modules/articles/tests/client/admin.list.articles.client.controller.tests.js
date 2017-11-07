@@ -47,7 +47,7 @@
       ArticlesService = _ArticlesService_;
 
       // Ignore parent template get on state transitions
-      $httpBackend.whenGET('/modules/articles/client/views/list-articles.client.view.html').respond(200, '');
+      $httpBackend.whenGET('/modules/remote/client/views/list-remote.client.view.html').respond(200, '');
       $httpBackend.whenGET('/modules/core/client/views/home.client.view.html').respond(200, '');
 
       // create mock article
@@ -78,9 +78,9 @@
         mockArticleList = [mockArticle, mockArticle];
       });
 
-      it('should send a GET request and return all articles', inject(function (ArticlesService) {
+      it('should send a GET request and return all remote', inject(function (ArticlesService) {
         // Set POST response
-        $httpBackend.expectGET('/api/articles').respond(mockArticleList);
+        $httpBackend.expectGET('/api/remote').respond(mockArticleList);
 
 
         $httpBackend.flush();

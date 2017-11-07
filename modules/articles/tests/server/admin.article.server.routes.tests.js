@@ -75,7 +75,7 @@ describe('Article Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new article
-        agent.post('/api/articles')
+        agent.post('/api/remote')
           .send(article)
           .expect(200)
           .end(function (articleSaveErr, articleSaveRes) {
@@ -84,15 +84,15 @@ describe('Article Admin CRUD tests', function () {
               return done(articleSaveErr);
             }
 
-            // Get a list of articles
-            agent.get('/api/articles')
+            // Get a list of remote
+            agent.get('/api/remote')
               .end(function (articlesGetErr, articlesGetRes) {
                 // Handle article save error
                 if (articlesGetErr) {
                   return done(articlesGetErr);
                 }
 
-                // Get articles list
+                // Get remote list
                 var articles = articlesGetRes.body;
 
                 // Set assertions
@@ -120,7 +120,7 @@ describe('Article Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new article
-        agent.post('/api/articles')
+        agent.post('/api/remote')
           .send(article)
           .expect(200)
           .end(function (articleSaveErr, articleSaveRes) {
@@ -133,7 +133,7 @@ describe('Article Admin CRUD tests', function () {
             article.title = 'WHY YOU GOTTA BE SO MEAN?';
 
             // Update an existing article
-            agent.put('/api/articles/' + articleSaveRes.body._id)
+            agent.put('/api/remote/' + articleSaveRes.body._id)
               .send(article)
               .expect(200)
               .end(function (articleUpdateErr, articleUpdateRes) {
@@ -170,7 +170,7 @@ describe('Article Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new article
-        agent.post('/api/articles')
+        agent.post('/api/remote')
           .send(article)
           .expect(422)
           .end(function (articleSaveErr, articleSaveRes) {
@@ -197,7 +197,7 @@ describe('Article Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new article
-        agent.post('/api/articles')
+        agent.post('/api/remote')
           .send(article)
           .expect(200)
           .end(function (articleSaveErr, articleSaveRes) {
@@ -207,7 +207,7 @@ describe('Article Admin CRUD tests', function () {
             }
 
             // Delete an existing article
-            agent.delete('/api/articles/' + articleSaveRes.body._id)
+            agent.delete('/api/remote/' + articleSaveRes.body._id)
               .send(article)
               .expect(200)
               .end(function (articleDeleteErr, articleDeleteRes) {
@@ -244,7 +244,7 @@ describe('Article Admin CRUD tests', function () {
         var userId = user.id;
 
         // Save a new article
-        agent.post('/api/articles')
+        agent.post('/api/remote')
           .send(article)
           .expect(200)
           .end(function (articleSaveErr, articleSaveRes) {
@@ -254,7 +254,7 @@ describe('Article Admin CRUD tests', function () {
             }
 
             // Get the article
-            agent.get('/api/articles/' + articleSaveRes.body._id)
+            agent.get('/api/remote/' + articleSaveRes.body._id)
               .expect(200)
               .end(function (articleInfoErr, articleInfoRes) {
                 // Handle article error

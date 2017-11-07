@@ -26,7 +26,7 @@
         }));
 
         it('Should have the correct URL', function () {
-          expect(mainstate.url).toEqual('/articles');
+          expect(mainstate.url).toEqual('/remote');
         });
 
         it('Should be abstract', function () {
@@ -53,7 +53,7 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(liststate.templateUrl).toBe('/modules/articles/client/views/list-articles.client.view.html');
+          expect(liststate.templateUrl).toBe('/modules/remote/client/views/list-remote.client.view.html');
         });
       });
 
@@ -64,7 +64,7 @@
 
         beforeEach(inject(function ($controller, $state, $templateCache) {
           viewstate = $state.get('articles.view');
-          $templateCache.put('/modules/articles/client/views/view-article.client.view.html', '');
+          $templateCache.put('/modules/remote/client/views/view-article.client.view.html', '');
 
           // create mock article
           mockArticle = new ArticlesService({
@@ -92,7 +92,7 @@
         it('should respond to URL', inject(function ($state) {
           expect($state.href(viewstate, {
             articleId: 1
-          })).toEqual('/articles/1');
+          })).toEqual('/remote/1');
         }));
 
         it('should attach an article to the controller scope', function () {
@@ -104,24 +104,24 @@
         });
 
         it('Should have templateUrl', function () {
-          expect(viewstate.templateUrl).toBe('/modules/articles/client/views/view-article.client.view.html');
+          expect(viewstate.templateUrl).toBe('/modules/remote/client/views/view-article.client.view.html');
         });
       });
 
       describe('Handle Trailing Slash', function () {
         beforeEach(inject(function ($state, $rootScope, $templateCache) {
-          $templateCache.put('/modules/articles/client/views/list-articles.client.view.html', '');
+          $templateCache.put('/modules/remote/client/views/list-remote.client.view.html', '');
 
           $state.go('articles.list');
           $rootScope.$digest();
         }));
 
         it('Should remove trailing slash', inject(function ($state, $location, $rootScope) {
-          $location.path('articles/');
+          $location.path('remote/');
           $rootScope.$digest();
 
-          expect($location.path()).toBe('/articles');
-          expect($state.current.templateUrl).toBe('/modules/articles/client/views/list-articles.client.view.html');
+          expect($location.path()).toBe('/remote');
+          expect($state.current.templateUrl).toBe('/modules/remote/client/views/list-remote.client.view.html');
         }));
       });
     });
