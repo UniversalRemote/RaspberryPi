@@ -6,12 +6,13 @@ var request = require('request');
 
 exports.send = function (req, res) {
   var info = req.body;
+  console.log("HERE");
   request.post(
-    'home.austinseber.com:20000/sling',
+    'http://home.austinseber.com:20000/sling',
     {json: {info: info}},
     function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log(body)
+        console.log(body);
         res.send("good");
       }
     }
