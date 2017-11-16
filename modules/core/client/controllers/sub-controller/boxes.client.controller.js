@@ -35,13 +35,12 @@
 
     $scope.getIcon = function(device){
       return {
-        'background-image':'url(' + device.icon.replace(/\\/g,'/') + ')',
+        'background-image':'url(' + device.icon + ')',
         'background-size': 'auto 100%'
       }
     };
 
     $scope.openDevice = function(device){
-      console.log("HERE");
       $uibModal.open({
         templateUrl: "/modules/core/client/views/sub-views/device.modal.client.view.html",
         controller: "DeviceModalController"

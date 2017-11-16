@@ -26,7 +26,7 @@
           if (!iconPath) {
             return addNewDevice('./modules/core/client/img/extra/cartoon-remote-control.jpg');
           } else {
-            return addNewDevice(iconPath.destination + iconPath.filename);
+            return addNewDevice(iconPath.destination +"/" + iconPath.filename);
           }
         })
         .then(function (res) {
