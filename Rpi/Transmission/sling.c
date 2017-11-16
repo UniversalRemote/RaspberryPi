@@ -63,21 +63,29 @@ int main(int argc, char *argv[])
     binaryString[0] = '\0';
     hexToBinStr(argv[2], binaryString);
 
-    switch (getProtocol(PROTOCOL_STRING, 4, argv[1]))
+    int returnValue;
+
+    switch ((enum PROTOCOL) protocol)
     {
-        NEC:
-            slingNEC(binaryString);
-            break;
-        SAMSUNG:
-            slingSAMSUNG(binaryString);
-            break;
-        RC5:
-            slingRC5(binaryString);
-            break;
-        RC6:
-            slingRC6(binaryString);
-            break;
+        case NEC:
+            returnValue = slingNEC(binaryString);
+	    break;
+        case SAMSUNG:
+            returnValue = slingSAMSUNG(binaryString);
+	    break;
+        case RC5:
+            returnValue = slingRC5(binaryString);
+	    break;
+        case RC6:
+            returnValue = slingRC6(binaryString);
+	    break;
+	default:
+	    printf("Error! Reached default protocol case.");
+	    returnValue = 1;
+
     }
+
+    return returnValue;
 }
 
 int getProtocol(const char** protocols, const int protocolsLength, const char* inputString)
