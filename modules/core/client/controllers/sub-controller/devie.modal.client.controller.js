@@ -8,10 +8,18 @@
     .module('core')
     .controller('DeviceModalController', DeviceModalController);
 
-  DeviceModalController.$inject = ['$scope', '$state', 'menuService'];
+  DeviceModalController.$inject = ['$scope','$stateParams'];
 
-  function DeviceModalController($scope, $state, menuService) {
+  function DeviceModalController($scope,  $stateParams) {
     var vm = this;
+    $scope.device = $stateParams.deviceOn;
+
+    $scope.getIcon = function(device){
+      return {
+        'background-image':'url(' + device.icon + ')',
+        'background-size': '100% auto'
+      }
+    }
 
   }
 }());

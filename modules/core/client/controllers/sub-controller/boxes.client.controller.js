@@ -14,9 +14,9 @@
       };
     });
 
-  boxesViewController.$inject = ['$scope','$uibModal','$http'];
+  boxesViewController.$inject = ['$scope','$uibModal','$http','$stateParams'];
 
-  function boxesViewController($scope,$uibModal,$http) {
+  function boxesViewController($scope,$uibModal,$http,$stateParams) {
     var vm = this;
     vm.errorMessage = null;
     $scope.devices;
@@ -41,6 +41,7 @@
     };
 
     $scope.openDevice = function(device){
+      $stateParams.deviceOn = device;
       $uibModal.open({
         templateUrl: "/modules/core/client/views/sub-views/device.modal.client.view.html",
         controller: "DeviceModalController"
