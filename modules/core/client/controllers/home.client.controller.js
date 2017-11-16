@@ -22,15 +22,7 @@
 
   function HomeController($scope,$http,Authentication,UsersService) {
     var vm = this;
-    var devices;
-    // console.log(user);
-    // UsersService.query({'username':user.username})
-    //   .then(function(res){
-    //     console.log(res);
-    //   });
-
-    // $scope.isEmpty = (!Authentication.user.devices && Authentication.user.devices.length > 0);
-
+    $scope.devices;
 
 
     $scope.updateUser = function(){
@@ -40,8 +32,9 @@
         method: "GET"
       })
         .then(function(res){
-          devices = res.data.devices;
-          console.log(devices);
+          $scope.devices = res.data.devices;
+          $scope.isEmpty = (!$scope.devices || $scope.devices.length == 0);
+        
         });
     };
 
