@@ -108,7 +108,7 @@ static inline int irSling(uint32_t outPin,
 
 	if (sendTrailingPulse)
 	{
-		carrierFrequency(outPin, frequency, dutyCycle, onePulse, irSignal, &pulseCount);
+		carrierFrequency(outPin, frequency, dutyCycle, zeroPulse, irSignal, &pulseCount);
 	}
 
 	printf("pulse count is %i\n", pulseCount);
