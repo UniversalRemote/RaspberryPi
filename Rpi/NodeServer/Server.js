@@ -9,15 +9,19 @@ app.use(bodyParser.urlencoded({
 }));
 
 
-app.post('/sling',function (req, res) {
-    sling(req.body.info.code)
-    .then(function(res) {
-        console.log(res);
-        res.send(res);
+app.post('/sling', function (req, res) {
+    console.log(req);
+    if (req.body.info.protocol != "NEC") {
+        return res.status(422).send("Only the NEC protocol is supported at the moment");
+    }
+    sling(req.body.info.hexCode)
+    .then(function(message) {
+        console.log(message);
+        return res.send(message);
     })
     .catch(function(err) {
         console.error(err);
-        res.send(err);
+        return res.send(err);
     })
 });
 
@@ -49,10 +53,10 @@ var sling = function(code) {
     });
 }
 
-sling("0xE0E0E01F")
+/*sling("0xE0E0E01F")
 .then(function(res) {
     console.log(res);
 })
 .catch(function(err) {
     console.error(err);
-});
+});*/

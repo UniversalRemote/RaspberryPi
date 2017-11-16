@@ -54,6 +54,6 @@ while True:
 
     binaryString = "".join(map(lambda x: "1" if x[1] > 1000 else "0", filter(lambda x: x[0] == 1, command)))
     binaryString = binaryString[1:]
-    print "Received code: \"" + str(hex(int(binaryString, 2))) + "\""
+    print "Received code: \"0x" + str(hex(int(binaryString, 2))).rstrip("L").upper()[2:] + "\""
     if len(binaryString) != 32:
         print "Warning, possibly invalid NEC code"
