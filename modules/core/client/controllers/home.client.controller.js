@@ -34,7 +34,7 @@
         .then(function(res){
           $scope.devices = res.data.devices;
           $scope.isEmpty = (!$scope.devices || $scope.devices.length == 0);
-        
+
         });
     };
 

@@ -1,8 +1,8 @@
 <div class="jumbotron text-center">
-  <h1 id="Title" class="Title">Universal Remote</h1>
+  <h1 id="Title" class="Title col-sm-12">Universal Remote</h1>
 
-  <!--<div class="row">-->
-  <!--</div>-->
-
+  <div ng-repeat="device in devices" class="col-sm-4 list_view_box_space">
+    <device-box></device-box>
+  </div>
 
 </div>
