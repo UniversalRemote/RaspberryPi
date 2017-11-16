@@ -7,10 +7,18 @@
 var remote = require('../controllers/testing.server.controller');
 
 module.exports = function (app) {
+
+  app.route('/api/user/update')
+    .post(remote.addNewDevice);
+
+  app.route('/api/remote/icon')
+    .post(remote.uploadIcon);
+
   // Articles collection routes
   app.route('/api/remote').all()
     .get(remote.list)
     .post(remote.send);
+    // .put(remote.update);
 
   // Single article routes
   // app.route('/api/remote/:articleId').all()

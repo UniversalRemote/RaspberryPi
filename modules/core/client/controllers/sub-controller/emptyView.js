@@ -19,7 +19,7 @@
         templateUrl: "/modules/core/client/views/sub-views/addNewController.html",
         controller: "AddNewControllerController"
       }).result.then(function (res) {
-        $scope.find();
+        // $scope.find();
       });
     }
   }

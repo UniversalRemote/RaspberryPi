@@ -119,6 +119,9 @@ var UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  devices : {
+    type: [{}]
+  },
   /* For reset password */
   resetPasswordToken: {
     type: String
