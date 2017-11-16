@@ -6,11 +6,11 @@
 
   angular
     .module('core')
-    .controller('emptyController', EmptyController);
+    .controller('boxesViewController', boxesViewController);
 
-  EmptyController.$inject = ['$stateParams','$scope','$uibModal'];
+  boxesViewController.$inject = ['$stateParams','$scope','$uibModal'];
 
-  function EmptyController($stateParams,$scope,$uibModal) {
+  function boxesViewController($stateParams,$scope,$uibModal) {
     var vm = this;
     vm.errorMessage = null;
 

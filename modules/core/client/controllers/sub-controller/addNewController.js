@@ -30,7 +30,7 @@
           }
         })
         .then(function (res) {
-          $scope.$close(res);
+          $scope.$close();
         })
         .catch(function (err) {
           console.log(err);
@@ -38,18 +38,19 @@
     };
 
     var addNewDevice = function (iconUrl) {
+      return new Promise(function (resolve, reject) {
+        $scope.device.icon = iconUrl;
 
-      $scope.device.icon = iconUrl;
-
-      $http({
-        method: 'POST',
-        url: '/api/user/update',
-        data: $scope.device
-      })
-        .then(function (res) {
-          console.log(res);
-        }).catch(function (err) {
-        console.log(err);
+        $http({
+          method: 'POST',
+          url: '/api/user/update',
+          data: $scope.device
+        })
+          .then(function (res) {
+            return resolve(res);
+          }).catch(function (err) {
+          return reject(err);
+        });
       });
     };
 
