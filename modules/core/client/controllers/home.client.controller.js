@@ -3,7 +3,14 @@
 
   angular
     .module('core')
-    .controller('HomeController', HomeController);
+    .controller('HomeController', HomeController)
+    .directive('emptyHtml', function () {
+      return {
+        restrict: 'E',
+        templateUrl: '/modules/core/client/views/sub-views/empty.client.view.html',
+        controller: 'emptyController'
+      };
+    });
 
   HomeController.$inject = ['$scope','$http'];
 
@@ -49,4 +56,5 @@
       });
     };
   }
+
 }());

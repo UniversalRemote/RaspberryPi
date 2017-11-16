@@ -1,0 +1,55 @@
+<section>
+  <div class="modal-header">
+    <h4 class="modal-title">Add New Device</h4>
+  </div>
+
+  <!--<a class="btn btn-primary btn-lg" ng-click="deleteIcon()" target="_blank">test Delete</a>-->
+
+  <div class="modal-body">
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="device.name" placeholder="Device Name" required="" autofocus="" style="">
+
+    <fieldset>
+      <div class="form-group text-center">
+        <img ngf-src="iconSelected ? device.icon : './modules/core/client/img/extra/cartoon-remote-control.jpg'"
+             class="img-thumbnail user-profile-picture" ngf-drop>
+      </div>
+      <div ng-show="loading" class="form-group text-center">
+        <img ng-src="/modules/core/client/img/loaders/loader.gif" height="50" width="50" alt="Loading image...">
+      </div>
+      <div class="text-center form-group">
+        <button class="btn my-button-controller" ngf-select="(iconSelected = true) && (loading = false)"
+                ng-model="device.icon" ngf-before-model-change="loading = true" ngf-resize="{width: 400}"
+                ngf-resize-if="$width > 400 || $height > 400">Select Picture
+        </button>
+      </div>
+    </fieldset>
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="device.id" placeholder="Device ID" required="" autofocus="" style="">
+
+    <br/>
+    <br/>
+    <br/>
+
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="device.type" placeholder="Set Device Type" required="" autofocus="" style="">
+    <br/>
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="device.brand" placeholder="Set Device Brand" required="" autofocus="" style="">
+    <br/>
+    <input type="text"
+           class="form-control ng-pristine ng-empty ng-invalid ng-invalid-required ng-touched"
+           ng-model="device.modal" placeholder="Set Device Modal" required="" autofocus="" style="">
+  </div>
+
+  <div class="modal-footer">
+    <!--<button type="button"  ng-click="$dismiss()">Cancel</button>-->
+    <button type="button" class="btn my-button-controller my-bg-green"  ng-click="saveDevice()">Add</button>
+  </div>
+</section>
