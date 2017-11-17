@@ -10,11 +10,7 @@ app.use(bodyParser.urlencoded({
 
 
 app.post('/sling', function (req, res) {
-    console.log(req);
-    if (req.body.info.protocol != "NEC") {
-        return res.status(422).send("Only the NEC protocol is supported at the moment");
-    }
-    sling(req.body.info.hexCode)
+    sling(req.body.info.protocol, req.body.info.hexCode)
     .then(function(message) {
         console.log(message);
         return res.send(message);
@@ -34,14 +30,14 @@ app.listen("8080");
 console.log("server listening on: http://localhost:8080");
 
 var callingCCode = false;
-var sling = function(code) {
+var sling = function(protocol, hexCode) {
     return new Promise(function(resolve,reject) {
         if(callingCCode) {
             return reject("C code is currently in use.");
         }
 
         callingCCode = true;
-        exec('sudo "' + __dirname +'/sling.exe" ' + code, function(error, stdout, stderr) {
+        exec('sudo "' + __dirname +'/sling.exe" ' + protocol  + " " + hexCode, function(error, stdout, stderr) {
             callingCCode = false;
             if (error) {
                 stderr.myMessage = "You're running the C code too quickly!";
@@ -53,10 +49,11 @@ var sling = function(code) {
     });
 }
 
-/*sling("0xE0E0E01F")
+/*sling("SAMSUNG", "0xE0E0E01F")
 .then(function(res) {
     console.log(res);
 })
 .catch(function(err) {
     console.error(err);
-});*/
+});
+*/

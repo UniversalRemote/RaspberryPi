@@ -85,6 +85,8 @@ int main(int argc, char *argv[])
 
     }
 
+    printf("Successfully slung%s\n", argv[2]);
+
     return returnValue;
 }
 
@@ -136,14 +138,14 @@ int slingNEC(const char* binCode)
 int slingSAMSUNG(const char* binCode)
 {
     int frequency = 37900;           // The frequency of the IR signal in Hz
-    double dutyCycle = 0.5;          // The duty cycle of the IR signal. 0.5 means for every cycle,
+    double dutyCycle = 1;          // The duty cycle of the IR signal. 0.5 means for every cycle,
                                      // the LED will turn on for half the cycle time, and off the other half
     int leadingPulseDuration = 4500; // The duration of the beginning pulse in microseconds
     int leadingGapDuration = 4500;   // The duration of the gap in microseconds after the leading pulse
-    int onePulse = 590;              // The duration of a pulse in microseconds when sending a logical 1
-    int zeroPulse = 590;             // The duration of a pulse in microseconds when sending a logical 0
+    int onePulse = 560;              // The duration of a pulse in microseconds when sending a logical 1
+    int zeroPulse = 560;             // The duration of a pulse in microseconds when sending a logical 0
     int oneGap = 1690;               // The duration of the gap in microseconds when sending a logical 1
-    int zeroGap = 590;               // The duration of the gap in microseconds when sending a logical 0
+    int zeroGap = 560;               // The duration of the gap in microseconds when sending a logical 0
     int sendTrailingPulse = 1;       // 1 = Send a trailing pulse with duration equal to "onePulse"
                                      // 0 = Don't send a trailing pulse
 
