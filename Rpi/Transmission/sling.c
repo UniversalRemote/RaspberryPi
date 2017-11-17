@@ -93,10 +93,6 @@ int slingCompoundCommand(const enum PROTOCOL protocol, const char** codes, const
             printf("An error occured sending the command.");
             return 1;
         }
-        else if (i != (codeCount - 1))
-        {
-            usleep(2500);
-        }
     }
 
     return 0;
