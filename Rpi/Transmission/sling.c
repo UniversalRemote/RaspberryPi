@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
     }
 
     if (strlen(argv[2]) != 10)
-    {
+     {
     	printf("Data to sling is not the right length. Format is 0x<value> where value is 8 hex characters long.\n");
 	exit(1);
     }
@@ -80,12 +80,12 @@ int main(int argc, char *argv[])
             returnValue = slingRC6(binaryString);
 	    break;
 	default:
-	    printf("Error! Reached default protocol case.");
+	    printf("Error! Reached default protocol case");
 	    returnValue = 1;
 
     }
 
-    printf("Successfully slung%s\n", argv[2]);
+    printf("Slung %s on %s protocol\n", argv[2], argv[1]);
 
     return returnValue;
 }
@@ -107,15 +107,15 @@ int getProtocol(const char** protocols, const int protocolsLength, const char* i
 
 int slingNEC(const char* binCode)
 {
-    int frequency = 38222;           // The frequency of the IR signal in Hz
-    double dutyCycle = 0.5;          // The duty cycle of the IR signal. 0.5 means for every cycle,
+    int frequency = 38000;           // The frequency of the IR signal in Hz
+    double dutyCycle = 0.2;          // The duty cycle of the IR signal. 0.5 means for every cycle,
                                      // the LED will turn on for half the cycle time, and off the other half
-    int leadingPulseDuration = 9000; // The duration of the beginning pulse in microseconds
-    int leadingGapDuration = 4500;   // The duration of the gap in microseconds after the leading pulse
-    int onePulse = 562;              // The duration of a pulse in microseconds when sending a logical 1
-    int zeroPulse = 562;             // The duration of a pulse in microseconds when sending a logical 0
-    int oneGap = 1688;               // The duration of the gap in microseconds when sending a logical 1
-    int zeroGap = 562;               // The duration of the gap in microseconds when sending a logical 0
+    int leadingPulseDuration = 8150; // The duration of the beginning pulse in microseconds  NOTE: Should be 9000
+    int leadingGapDuration = 4000;   // The duration of the gap in microseconds after the leading pulse  NOTE: Should be 4500
+    int onePulse = 520;              // The duration of a pulse in microseconds when sending a logical 1  NOTE: Should be 562
+    int zeroPulse = 500;             // The duration of a pulse in microseconds when sending a logical 0  NOTE: Should be 562
+    int oneGap = 1480;               // The duration of the gap in microseconds when sending a logical 1  NOTE: Should be 1688
+    int zeroGap = 450;               // The duration of the gap in microseconds when sending a logical 0  NOTE: Should be 562
     int sendTrailingPulse = 1;       // 1 = Send a trailing pulse with duration equal to "zeroPulse"
                                      // 0 = Don't send a trailing pulse
 
@@ -138,14 +138,14 @@ int slingNEC(const char* binCode)
 int slingSAMSUNG(const char* binCode)
 {
     int frequency = 37900;           // The frequency of the IR signal in Hz
-    double dutyCycle = 1;          // The duty cycle of the IR signal. 0.5 means for every cycle,
+    double dutyCycle = 0.2;          // The duty cycle of the IR signal. 0.5 means for every cycle,
                                      // the LED will turn on for half the cycle time, and off the other half
-    int leadingPulseDuration = 4500; // The duration of the beginning pulse in microseconds
-    int leadingGapDuration = 4500;   // The duration of the gap in microseconds after the leading pulse
-    int onePulse = 560;              // The duration of a pulse in microseconds when sending a logical 1
-    int zeroPulse = 560;             // The duration of a pulse in microseconds when sending a logical 0
-    int oneGap = 1690;               // The duration of the gap in microseconds when sending a logical 1
-    int zeroGap = 560;               // The duration of the gap in microseconds when sending a logical 0
+    int leadingPulseDuration = 4200; // The duration of the beginning pulse in microseconds  NOTE: Should be 4500
+    int leadingGapDuration = 4000;   // The duration of the gap in microseconds after the leading pulse  NOTE: Should be 4500
+    int onePulse = 530;              // The duration of a pulse in microseconds when sending a logical 1  NOTE: Should be 560
+    int zeroPulse = 510;             // The duration of a pulse in microseconds when sending a logical 0  NOTE: Should be 560
+    int oneGap = 1500;               // The duration of the gap in microseconds when sending a logical 1  NOTE: Should be 1690
+    int zeroGap = 480;               // The duration of the gap in microseconds when sending a logical 0  NOTE: Should be 560
     int sendTrailingPulse = 1;       // 1 = Send a trailing pulse with duration equal to "onePulse"
                                      // 0 = Don't send a trailing pulse
 
