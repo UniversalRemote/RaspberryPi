@@ -1,0 +1,40 @@
+#controller span{
+	font-size: 32px;
+}
+
+#controller button{
+	margin:3px;
+}
+
+#number {
+	text-align: center;
+}
+
+#VolAndCha {
+	text-align: center;
+}
+
+#arrows{
+	text-align: center;
+}
+
+#number button{
+	font-size: 24px;
+	width: 60px;
+}
+
+#topValue {
+	text-align: center;
+}
+
+#topValue .glyphicon-off{
+	font-size: 50px;
+}
+
+#topValue .btn-info{
+	margin-top: 15%;
+}
+
+#arrows .btn-success{
+	font-size: 23px;
+}

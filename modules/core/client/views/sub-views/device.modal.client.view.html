@@ -1,10 +1,153 @@
 <section>
   <div class="modal-header" ng-style="getIcon(device)">
-    <h4 class="modal-title" >{{device.name}}</h4>
+    <h4 class="modal-title">{{device.name}}</h4>
   </div>
 
-  <div class="modal-body">
+  <div id="controller" class="modal-body row">
 
+    <div class="col-xs-12">
+    <div id="topValue" class="row">
+      <div class="col-xs-4">
+        <button type="button" ng-disabled="!key.KEY_MENU" class="btn btn-info" ng-click="press(key.KEY_MENU)">
+          <span class="glyphicon glyphicon-cog"></span>
+        </button>
+      </div>
+      <div class="col-xs-4">
+        <button type="button" ng-disabled="!key.KEY_POWER" class="btn btn-success" ng-click="press(key.KEY_POWER)">
+          <span class="glyphicon glyphicon-off"></span>
+        </button>
+      </div>
+      <div class="col-xs-4">
+        <button type="button" ng-disabled="!key.KEY_SOURCE" class="btn btn-info" ng-click="press(key.KEY_SOURCE)">
+          Source
+        </button>
+      </div>
+
+    </div>
+    </div>
+
+
+    <!--NUMBER-->
+    <div class="col-xs-12 col-md-6 col-xl-4">
+      <div id="number" class="row">
+        <div>
+          <button type="button" ng-disabled="!key.KEY_1" class="btn" ng-click="press(key.KEY_1)">
+            1
+          </button>
+          <button type="button" ng-disabled="!key.KEY_2" class="btn" ng-click="press(key.KEY_2)">
+            2
+          </button>
+          <button type="button" ng-disabled="!key.KEY_3" class="btn" ng-click="press(key.KEY_3)">
+            3
+          </button>
+        </div>
+        <div>
+          <button type="button" ng-disabled="!key.KEY_4" class="btn" ng-click="press(key.KEY_4)">
+            4
+          </button>
+          <button type="button" ng-disabled="!key.KEY_5" class="btn" ng-click="press(key.KEY_5)">
+            5
+          </button>
+          <button type="button" ng-disabled="!key.KEY_6" class="btn" ng-click="press(key.KEY_6)">
+            6
+          </button>
+        </div>
+        <div>
+          <button type="button" ng-disabled="!key.KEY_7" class="btn" ng-click="press(key.KEY_7)">
+            7
+          </button>
+          <button type="button" ng-disabled="!key.KEY_8" class="btn" ng-click="press(key.KEY_8)">
+            8
+          </button>
+          <button type="button" ng-disabled="!key.KEY_9" class="btn" ng-click="press(key.KEY_9)">
+            9
+          </button>
+        </div>
+        <button type="button" ng-disabled="!key.KEY_MINUS" class="btn" ng-click="press(key.KEY_MINUS)">
+          <span class="glyphicon glyphicon-minus"></span>
+        </button>
+        <button type="button" ng-disabled="!key.KEY_0" class="btn" ng-click="press(key.KEY_0)">
+          0
+        </button>
+        <button type="button" ng-disabled="!key.KEY_BACK" class="btn" ng-click="press(key.KEY_BACK)">
+          <span class="glyphicon glyphicon-repeat"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-xl-4">
+    <div id="VolAndCha" class="row">
+      <!--VOLUME-->
+      <div class="col-xs-4">
+        <div class="btn-group-vertical">
+          <button type="button" ng-disabled="!key.KEY_VOLUME_UP" class="btn btn-default"
+                  ng-click="press(key.KEY_VOLUME_UP)">
+            <span class="glyphicon glyphicon-volume-up"></span>
+          </button>
+          <button type="button" ng-disabled="!key.KEY_VOLUME_DOWN" class="btn"
+                  ng-click="press(key.KEY_VOLUME_DOWN)">
+            <span class="glyphicon glyphicon-volume-down"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="col-xs-4">
+        <br/>
+        <button type="button" ng-disabled="!key.KEY_MUTE" class="btn btn-danger" ng-click="press(key.KEY_MUTE)">
+          <span class="glyphicon glyphicon-volume-off"></span>
+        </button>
+      </div>
+
+      <!--CHANNEL-->
+      <div class="col-xs-4">
+        <div class="btn-group-vertical">
+          <button type="button" ng-disabled="!key.KEY_CHANNEL_UP" class="btn btn-default"
+                  ng-click="press(key.KEY_CHANNEL_UP)">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </button>
+
+          <button type="button" ng-disabled="!key.KEY_CHANNEL_DOWN" class="btn"
+                  ng-click="press(key.KEY_CHANNEL_DOWN)">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+    <!--ARROWS-->
+    <div class="col-xs-12 col-sm-6 col-xl-4">
+    <div id="arrows" class="row">
+      <div>
+        <button type="button" ng-disabled="!key.KEY_UP" class="btn btn-default" ng-click="press(key.KEY_UP)">
+          <span class="glyphicon glyphicon-arrow-up"></span>
+        </button>
+      </div>
+
+      <div>
+
+        <button type="button" ng-disabled="!key.KEY_LEFT" class="btn btn-default" ng-click="press(key.KEY_LEFT)">
+          <span class="glyphicon glyphicon-arrow-left"></span>
+        </button>
+
+        <button type="button" ng-disabled="!key.KEY_ENTER" class="btn btn-success" ng-click="press(key.KEY_ENTER)">
+          Enter
+        </button>
+
+        <button type="button" ng-disabled="!key.KEY_RIGHT" class="btn btn-default" ng-click="press(key.KEY_RIGHT)">
+          <span class="glyphicon glyphicon-arrow-right"></span>
+        </button>
+
+      </div>
+
+      <div>
+        <button type="button" ng-disabled="!key.KEY_DOWN" class="btn btn-default" ng-click="press(key.KEY_DOWN)">
+          <span class="glyphicon glyphicon-arrow-down"></span>
+        </button>
+      </div>
+    </div>
+    </div>
 
   </div>
 
@@ -13,3 +156,5 @@
     <button type="button" class="btn my-button-controller my-bg-green" ng-click="saveDevice()">Add</button>
   </div>
 </section>
+
+
