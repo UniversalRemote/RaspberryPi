@@ -106,8 +106,8 @@ exports.list = function (req, res) {
  * @param device: contains device information
  */
 var getDeviceUrl = function(device){
-  // return 'http://home.austinseber.com:20000/sling';
-    return 'http://192.168.1.10:8080/sling'; //in local repo
+  return 'http://home.austinseber.com:20000/sling';
+  //   return 'http://192.168.1.10:8080/sling'; //in local repo
 };
 
 /**
@@ -121,14 +121,14 @@ var getInfo = function(keyName, device){
   var temp = getButton();
   info.protocol = temp.protocol;
   info.keyName = keyName;
-  info.hexCode = temp.keyMap[keyName];
+  info.hexCode = [temp.keyMap[keyName]];
 
   return info;
 };
 
 var getButton = function () {
   return {
-    protocol: "NEC",
+    protocol: "SAMSUNG",
     keyMap: {
       "KEY_0": "0xE0E08877",
       "KEY_1": "0xE0E020DF",
@@ -156,4 +156,4 @@ var getButton = function () {
       "KEY_MENU": "0xE0E058A7"
     }
   };
-}
+};
