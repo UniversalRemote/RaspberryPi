@@ -121,7 +121,7 @@ var getInfo = function(keyName, device){
   var temp = getButton();
   info.protocol = temp.protocol;
   info.keyName = keyName;
-  info.code = temp.keyMap[keyName];
+  info.hexCode = temp.keyMap[keyName];
 
   return info;
 };
