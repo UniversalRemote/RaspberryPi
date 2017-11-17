@@ -25,6 +25,8 @@ static const uint32_t LED_PIN = 4;
 void hexToBinStr(const char*, char*);
 int hexChar2int(const char);
 void int2binStr(int, char *);
+int slingCompoundCommand(const enum PROTOCOL, const char**, const int);
+int slingCommand(const enum PROTOCOL, const char*);
 int getProtocol(const char**, const int, const char*);
 int slingNEC(const char*);
 int slingSAMSUNG(const char*);
@@ -33,9 +35,9 @@ int slingRC6(const char*);
 
 int main(int argc, char *argv[])
 {
-    if (argc != 3)
+    if (argc < 3)
     {
-        printf("Not enough arguments supplied. Example arguments: NEC 0xFFFFFFFF.\n");
+        printf("Not enough arguments supplied. Example arguments: NEC 0xFFFFFFFF 0x0A0B0C0D.\n");
         exit(1);
     }
 
@@ -43,51 +45,96 @@ int main(int argc, char *argv[])
 
     if (protocol == -1)
     {
-	printf("\"%s\" is not a valid protocol. Accepted values are:\n", argv[1]);
-	int i;
-	for (i = 0; i < PROTOCOL_NR; i++)
-	{
-	    printf("\t%s\n", PROTOCOL_STRING[i]);
-	}
+        printf("\"%s\" is not a valid protocol. Accepted values are:\n", argv[1]);
 
-	exit(1);
+        int i;
+        for (i = 0; i < PROTOCOL_NR; i++)
+        {
+            printf("\t%s\n", PROTOCOL_STRING[i]);
+        }
+
+        exit(1);
     }
 
-    if (strlen(argv[2]) != 10)
-     {
-    	printf("Data to sling is not the right length. Format is 0x<value> where value is 8 hex characters long.\n");
-	exit(1);
+    const char* codes[argc - 2];
+
+    int i;
+    for (i = 2; i < argc; i++)
+    {
+        codes[i - 2] = argv[i];
+    }
+
+    if (slingCompoundCommand(protocol, codes, argc - 2) == 0)
+    {
+        printf("Slung:\n\t");
+
+        int i;
+        for (i = 0; i < argc - 2; i++)
+        {
+            printf("%s\n\t", codes[i]);
+        }
+
+        printf("\non %s protocol\n", argv[1]);
+        return 0;
+    }
+    else {
+        printf("An unknown error occured.");
+        return 1;
+    }
+}
+
+int slingCompoundCommand(const enum PROTOCOL protocol, const char** codes, const int codeCount)
+{
+    int i;
+    for (i = 0; i < codeCount; i++)
+    {
+        if (slingCommand(protocol, codes[i]) != 0)
+        {
+            printf("An error occured sending the command.");
+            return 1;
+        }
+        else if (i != (codeCount - 1))
+        {
+            usleep(2500);
+        }
+    }
+
+    return 0;
+}
+
+int slingCommand(const enum PROTOCOL protocol, const char* code)
+{
+    if (strlen(code) != 10)
+    {
+        printf("\"%s\" is not the right length. Format is 0x<value> where value is 8 hex characters long", code);
+        exit(1);
     }
 
     char binaryString[33];
     binaryString[0] = '\0';
-    hexToBinStr(argv[2], binaryString);
+    hexToBinStr(code, binaryString);
 
     int returnValue;
 
-    switch ((enum PROTOCOL) protocol)
+    switch (protocol)
     {
         case NEC:
             returnValue = slingNEC(binaryString);
-	    break;
+            break;
         case SAMSUNG:
             returnValue = slingSAMSUNG(binaryString);
-	    break;
+            break;
         case RC5:
             returnValue = slingRC5(binaryString);
-	    break;
+            break;
         case RC6:
             returnValue = slingRC6(binaryString);
-	    break;
-	default:
-	    printf("Error! Reached default protocol case");
-	    returnValue = 1;
-
+            break;
+        default:
+            printf("Error! Reached default protocol case");
+            returnValue = 1;
+            break;
     }
-
-    printf("Slung %s on %s protocol\n", argv[2], argv[1]);
-
-    return returnValue;
 }
 
 int getProtocol(const char** protocols, const int protocolsLength, const char* inputString)

@@ -30,14 +30,25 @@ app.listen("8080");
 console.log("server listening on: http://localhost:8080");
 
 var callingCCode = false;
-var sling = function(protocol, hexCode) {
+var sling = function(protocol, hexCodes) {
     return new Promise(function(resolve,reject) {
         if(callingCCode) {
             return reject("C code is currently in use.");
         }
 
         callingCCode = true;
-        exec('sudo "' + __dirname +'/sling.exe" ' + protocol  + " " + hexCode, function(error, stdout, stderr) {
+        
+	command = 'sudo "' + __dirname + '/sling.exe" ' + protocol + " ";
+	
+	hexCodes.forEach(function(hexCode) {
+	    command += hexCode + " ";
+	});
+
+	command = command.trim();
+
+	console.log(command);
+
+	exec(command, function(error, stdout, stderr) {
             callingCCode = false;
             if (error) {
                 stderr.myMessage = "You're running the C code too quickly!";
@@ -49,11 +60,11 @@ var sling = function(protocol, hexCode) {
     });
 }
 
-/*sling("SAMSUNG", "0xE0E0E01F")
+sling("SAMSUNG", ["0xE0E0E01F", "0x55555555"])
+//sling("SAMSUNG", ["0xE0E0E01F"])
 .then(function(res) {
     console.log(res);
 })
 .catch(function(err) {
     console.error(err);
 });
-*/
