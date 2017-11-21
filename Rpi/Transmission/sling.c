@@ -66,15 +66,14 @@ int main(int argc, char *argv[])
 
     if (slingCompoundCommand(protocol, codes, argc - 2) == 0)
     {
-        printf("Slung:\n\t");
+        printf("Slung on %s protocol:\n\t", argv[1]);
 
         int i;
         for (i = 0; i < argc - 2; i++)
         {
-            printf("%s\n\t", codes[i]);
+            printf("\t%s\n", codes[i]);
         }
 
-        printf("\non %s protocol\n", argv[1]);
         return 0;
     }
     else {
